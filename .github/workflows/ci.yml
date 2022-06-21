@@ -17,5 +17,5 @@ jobs:
       run: git archive --format=zip --output my-zip-file.zip main
 
     - name: Push the corresponding artifact to JFrog
-      run: Invoke-RestMethod -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -T my-zip-file.zip "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/my-zip-file"
+      run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -T my-zip-file.zip "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/my-zip-file"
         
