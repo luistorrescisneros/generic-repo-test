@@ -31,6 +31,7 @@ jobs:
     - name: test CMake
       run: cmake.exe --help
 
+    # trigger pipeline
     - name: test MinGW
       run: mingw32-make.exe -h
 
