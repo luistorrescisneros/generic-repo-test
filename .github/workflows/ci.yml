@@ -27,7 +27,7 @@ jobs:
         mkdir build
         cd build
         cmake.exe -G "MinGW Makefiles" ..
-        mingw32-make.exe .
+        mingw32-make.exe
         
     #- name: test CMake
     #  run: cmake.exe --help
