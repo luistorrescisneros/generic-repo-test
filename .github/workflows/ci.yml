@@ -6,7 +6,7 @@ jobs:
   build:
 
     env:
-      version: v0.0.0.2542594468
+      version: lib_jfrog
 
     runs-on: self-hosted
     

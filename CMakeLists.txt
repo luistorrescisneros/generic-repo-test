@@ -3,7 +3,7 @@ project(myProject)
 
 include(FetchContent)
 FetchContent_Declare(lib 
-	URL ${CMAKE_CURRENT_SOURCE_DIR}/v0.0.0.2542594468.zip
+	URL ${CMAKE_CURRENT_SOURCE_DIR}/lib_jfrog.zip
 )
 FetchContent_MakeAvailable(lib)
 
