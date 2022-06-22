@@ -39,6 +39,5 @@ jobs:
     #- name: test MinGW
     #  run: mingw32-make.exe -h
 
-    # Trigger pipeline
     - name: Run application
       run: .\build\app\app.exe
