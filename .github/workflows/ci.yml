@@ -27,7 +27,7 @@ jobs:
         mkdir build
         cd build
         cmake -G "MinGW Makefiles" ..
-        mingw32-make.exe .
+        
 
-    - name: Run application
-      run: .\build\app\app.exe
+    #- name: Run application
+    #  run: .\build\app\app.exe
