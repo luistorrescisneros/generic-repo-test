@@ -3,6 +3,9 @@ name: Create Artifact in Generic JFrog
 on: [push]
 
 jobs:
+  env:
+    version: v0.0.0.2542512856
+
   build:
     runs-on: self-hosted
     
@@ -20,7 +23,7 @@ jobs:
     #  run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -T lib_jfrog.zip "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/${{github.repository}}/lib_jfrog.zip"
 
     - name: Retrieve artifact from JFrog
-      run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -O "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/luistorrescisneros/generic-repo-test/lib_jfrog.zip"   
+      run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -O "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/luistorrescisneros/generic-repo-test/${{env.version}}.zip"   
 
     - name: Create a build dir and compile code
       run: |
