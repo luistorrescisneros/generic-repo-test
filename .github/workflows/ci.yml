@@ -22,12 +22,17 @@ jobs:
     - name: Retrieve artifact from JFrog
       run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -O "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/luistorrescisneros/generic-repo-test/lib_jfrog.zip"   
 
-    - name: Create a build dir and compile code
-      run: |
-        mkdir build
-        cd build
-        ."C:\Program Files\CMake\bin\cmake.exe" -G "MinGW Makefiles" ..
+    #- name: Create a build dir and compile code
+    #  run: |
+    #    mkdir build
+    #    cd build
+    #    ."C:\Program Files\CMake\bin\cmake.exe" -G "MinGW Makefiles" ..
         
+    - name: test CMake
+      run: cmake.exe --help
+
+    - name: test MinGW
+      run: mingw32-make.exe -h
 
     #- name: Run application
     #  run: .\build\app\app.exe
