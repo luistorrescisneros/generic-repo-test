@@ -3,10 +3,11 @@ name: Create Artifact in Generic JFrog
 on: [push]
 
 jobs:
-  env:
-    version: v0.0.0.2542512856
-
   build:
+     
+    env:
+      version: v0.0.0.2542512856
+
     runs-on: self-hosted
     
     steps:
