@@ -26,7 +26,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        .'C:\Program Files\CMake\bin\cmake.exe -G "MinGW Makefiles" ..'
+        ."C:\Program Files\CMake\bin\cmake.exe" -G "MinGW Makefiles" ..
         
 
     #- name: Run application
