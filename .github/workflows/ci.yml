@@ -1,21 +1,29 @@
-name: Create Artifact in Generic JFrog
+name: Create Artifact JFrog
 
-on: [push]
+# trigger
+on: [push, pull_request]
 
 jobs:
-  build:
 
+  build:
     env:
       version: lib_jfrog
-
     runs-on: self-hosted
     
     steps:
-    - name: Checkout in self-hosted runner
+    - name: Checkout code
       uses: actions/checkout@v3
     
-    - name: Print a Hello workflow   
-      run: echo "Hello workflow!"
+    - name: Print Hello Workflow   
+      run: echo "Hello Workflow!"
+
+    - name: Print GitHub-Context
+      run: |
+        echo "base_ref: ${{ github.base_ref }}"
+        echo "head_ref: ${{ github.head_ref }}" 
+        echo "ref: ${{ github.ref }}"
+        echo "ref_name: ${{ github.ref_name }}"
+        echo "merged: ${{ github.event.pull_request.merged }}" 
 
     #- name: Create a zip file
     #  run: git archive --format=zip --output=lib_jfrog.zip main lib
@@ -23,10 +31,10 @@ jobs:
     #- name: Push the corresponding artifact to JFrog
     #  run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -T lib_jfrog.zip "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/${{github.repository}}/lib_jfrog.zip"
 
-    - name: Retrieve artifact from JFrog
+    - name: Retrieve Artifact - JFrog
       run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -O "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/luistorrescisneros/generic-repo-test/${{env.version}}.zip"   
 
-    - name: Create a build dir and compile code
+    - name: Build app
       run: |
         mkdir build
         cd build
@@ -39,5 +47,5 @@ jobs:
     #- name: test MinGW
     #  run: mingw32-make.exe -h
 
-    - name: Run application
+    - name: Run app
       run: .\build\app\app.exe
