@@ -10,7 +10,7 @@ jobs:
 
   build:
     env:
-      version: lib_jfrog1
+      version: lib_jfrog
     runs-on: self-hosted
     
     steps:
@@ -57,7 +57,7 @@ jobs:
     - name: Run app
       run: .\build\app\app.exe
 
-    - name: Increase build
+    - name: Increase Build-Number
       run: echo "v1.1.1.1"
 
 
@@ -69,17 +69,17 @@ jobs:
       
       -
         if: github.base_ref == 'main' && github.head_ref == 'develop'      
-        name: Increase Major
+        name: Increase Major-Number
         run: echo "v1.0.0.0"
       
       -
         if: github.base_ref == 'develop' && github.head_ref == 'feature'      
-        name: Increase Minor
+        name: Increase Minor-Number
         run: echo "v1.1.0.0"
 
       -
         if: github.head_ref == 'hotfix'
-        name: Increase Patch
+        name: Increase Patch-Number
         run: echo "v1.1.1.0"
 
 
