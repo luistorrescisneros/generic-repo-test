@@ -10,7 +10,7 @@ jobs:
 
   build:
     env:
-      version: lib_jfrog
+      version: lib_jfrog1
     runs-on: self-hosted
     
     steps:
