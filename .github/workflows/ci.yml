@@ -58,7 +58,7 @@ jobs:
       run: .\build\app\app.exe
 
     - name: Increase Build-Number
-      run: ."C:\Program Files\Git\bin\bash.exe" tag-release.sh --help
+      run: ."C:\Program Files\Git\bin\bash.exe" tag-release.sh 
       #run: echo "v1.1.1.1"
 
 
@@ -71,19 +71,24 @@ jobs:
       -
         if: github.base_ref == 'main' && github.head_ref == 'develop'      
         name: Increase Major-Number
-        run: ."C:\Program Files\Git\bin\bash.exe" test.sh
+        run: ."C:\Program Files\Git\bin\bash.exe" test.sh --type major
+      -
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-lib
+          path: lib/
         #run: echo "v1.0.0.0"
       
       -
         if: github.base_ref == 'develop' && github.head_ref == 'feature'      
         name: Increase Minor-Number
-        run: ."C:\Program Files\Git\bin\bash.exe" test.sh
+        run: ."C:\Program Files\Git\bin\bash.exe" test.sh --type minor
         #run: echo "v1.1.0.0"
 
       -
         if: github.head_ref == 'hotfix'
         name: Increase Patch-Number
-        run: ."C:\Program Files\Git\bin\bash.exe" test.sh
+        run: ."C:\Program Files\Git\bin\bash.exe" test.sh --type patch
         #run: echo "v1.1.1.0"
 
 
