@@ -57,10 +57,9 @@ jobs:
       run: .\build\app\app.exe
     
   version:
-
+    if: github.event.pull_request.merged 
     runs-on: self-hosted
-    steps:  
-    if: github.event.pull_request.merged && github.base_ref == 'main' && github.head_ref == 'develop'    
+    steps:      
       - name: Increase major tag
         run: echo "v0.0.0.0"
         
