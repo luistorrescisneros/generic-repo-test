@@ -38,8 +38,8 @@ jobs:
     #- name: Push the corresponding artifact to JFrog
     #  run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -T lib_jfrog.zip "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/${{github.repository}}/lib_jfrog.zip"
 
-    - name: Retrieve Artifact - JFrog
-      run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -O "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/luistorrescisneros/generic-repo-test/${{env.version}}.zip"   
+    #- name: Retrieve Artifact - JFrog
+    #  run: curl.exe -H "X-JFrog-Art-Api:${{ secrets.JF_ARTIFACTORY_API_KEY }}" -O "https://luistorrescisneros.jfrog.io/artifactory/default-generic-local/luistorrescisneros/generic-repo-test/${{env.version}}.zip"   
 
     - name: Build app
       run: |
@@ -58,7 +58,7 @@ jobs:
       run: .\build\app\app.exe
 
     - name: Increase Build-Number
-      run: ."C:\Program Files\Git\bin\bash.exe" test.sh
+      run: ."C:\Program Files\Git\bin\bash.exe" tag-release.sh --help
       #run: echo "v1.1.1.1"
 
 
