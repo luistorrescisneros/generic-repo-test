@@ -3,6 +3,7 @@ name: Create Artifact JFrog
 on: 
   pull_request:
     types: [closed]
+  push: []
 
 
 jobs:
@@ -55,15 +56,31 @@ jobs:
 
     - name: Run app
       run: .\build\app\app.exe
-    
+
+    - name: Increase build
+      run: echo "v1.1.1.1"
+
+
   version:
     needs: [build]
     if: github.event.pull_request.merged 
     runs-on: self-hosted
     steps:
+      
       -
         if: github.base_ref == 'main' && github.head_ref == 'develop'      
-        name: Increase major tag
-        run: echo "v0.0.0.0"
-        
+        name: Increase Major
+        run: echo "v1.0.0.0"
+      
+      -
+        if: github.base_ref == 'develop' && github.head_ref == 'feature'      
+        name: Increase Minor
+        run: echo "v1.1.0.0"
+
+      -
+        if: github.head_ref == 'hotfix'
+        name: Increase Patch
+        run: echo "v1.1.1.0"
+
+
 
