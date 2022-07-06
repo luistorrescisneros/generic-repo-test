@@ -57,7 +57,9 @@ jobs:
     - name: Run app
       run: .\build\app\app.exe
 
-    - name: Increase Build-Number
+
+    - if: github.event.pull_request.merged != true && github.event_name != 'pull_request'
+      name: Increase Build-Number
       run: ."C:\Program Files\Git\bin\bash.exe" tag-release.sh --branch ${{github.base_ref}}
       #run: echo "v1.1.1.1"
 
