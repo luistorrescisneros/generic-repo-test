@@ -55,3 +55,12 @@ jobs:
 
     - name: Run app
       run: .\build\app\app.exe
+    
+  version:
+    if: github.event.pull_request.merged 
+    runs-on: self-hosted
+    steps:      
+      - name: Increase major tag
+        run: echo "v0.0.0.0"
+        
+
