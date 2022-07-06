@@ -59,9 +59,8 @@ jobs:
   version:
 
     runs-on: self-hosted
-    steps:
-      
-      if: github.event.pull_request.merged && github.base_ref == 'main' && github.head_ref == 'develop'    
+    steps:  
+    if: github.event.pull_request.merged && github.base_ref == 'main' && github.head_ref == 'develop'    
       - name: Increase major tag
         run: echo "v0.0.0.0"
         
