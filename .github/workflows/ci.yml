@@ -73,7 +73,7 @@ jobs:
       -
         if: github.base_ref == 'main' && github.head_ref == 'develop'      
         name: Increase Major-Number
-        run: ."C:\Program Files\Git\bin\bash.exe" test.sh --branch ${{github.base_ref}}  --type major
+        run: ."C:\Program Files\Git\bin\bash.exe" tag-release.sh --branch ${{github.base_ref}}  --type major
       -
         uses: actions/upload-artifact@v3
         with:
@@ -84,13 +84,13 @@ jobs:
       -
         if: github.base_ref == 'develop' && github.head_ref == 'feature'      
         name: Increase Minor-Number
-        run: ."C:\Program Files\Git\bin\bash.exe" test.sh --branch ${{github.base_ref}} --type minor
+        run: ."C:\Program Files\Git\bin\bash.exe" tag-release.sh --branch ${{github.base_ref}} --type minor
         #run: echo "v1.1.0.0"
 
       -
         if: github.head_ref == 'hotfix'
         name: Increase Patch-Number
-        run: ."C:\Program Files\Git\bin\bash.exe" test.sh --branch ${{github.head_ref}} --type patch
+        run: ."C:\Program Files\Git\bin\bash.exe" tag-release.sh --branch ${{github.head_ref}} --type patch
         #run: echo "v1.1.1.0"
 
 
