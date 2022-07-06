@@ -21,7 +21,8 @@ jobs:
         echo "base_ref: ${{ github.base_ref }}"
         echo "head_ref: ${{ github.head_ref }}" 
         echo "ref: ${{ github.ref }}"
-        echo "ref_name: ${{ github.ref_name }}" 
+        echo "ref_name: ${{ github.ref_name }}"
+        echo "merged: ${{ github.event.pull_request.merged }}" 
 
     #- name: Create a zip file
     #  run: git archive --format=zip --output=lib_jfrog.zip main lib
