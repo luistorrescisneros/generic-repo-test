@@ -1,7 +1,9 @@
 name: Create Artifact JFrog
 
-# trigger
-on: [push, pull_request]
+on: 
+  pull_request:
+    types: [closed]
+
 
 jobs:
 
@@ -23,7 +25,11 @@ jobs:
         echo "head_ref: ${{ github.head_ref }}" 
         echo "ref: ${{ github.ref }}"
         echo "ref_name: ${{ github.ref_name }}"
-        echo "merged: ${{ github.event.pull_request.merged }}" 
+        echo "merged: ${{ github.event.pull_request.merged }}"
+        echo "event_name: ${{ github.event_name }}"
+        echo "event.action = ${{ github.event.action }}"
+
+    #github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true 
 
     #- name: Create a zip file
     #  run: git archive --format=zip --output=lib_jfrog.zip main lib
