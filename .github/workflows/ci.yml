@@ -1,15 +1,12 @@
-name: Create Artifact in Generic JFrog
+name: Create Artifact JFrog
 
 on: [push]
 
 jobs:
-  version:
-    runs-on: self-hosted
 
   build:
     env:
       version: lib_jfrog
-
     runs-on: self-hosted
     
     steps:
@@ -22,7 +19,8 @@ jobs:
     - name: Print GitHub Context
       run: |
         echo "base_ref: ${{ github.base_ref }}"
-        echo "head_ref: ${{ github.head_ref }}"  
+        echo "head_ref: ${{ github.head_ref }}" 
+        echo "ref: ${{ github.ref }}" 
 
     #- name: Create a zip file
     #  run: git archive --format=zip --output=lib_jfrog.zip main lib
