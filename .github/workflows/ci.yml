@@ -57,6 +57,12 @@ jobs:
     - name: Run app
       run: .\build\app\app.exe
 
+    - name: Check Docker-Image
+      run: docker images -q my-image
+    - if: failure() 
+      run: echo "I was not succesful"                
+    - if: success()
+      run: echo "I was succesful"
 
     - if: github.event.pull_request.merged != true && github.event_name != 'pull_request'
       name: Increase Build-Number
