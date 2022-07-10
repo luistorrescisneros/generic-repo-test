@@ -1,6 +1,5 @@
 name: Create Artifact JFrog
 
-# trigger workflow
 on: 
   pull_request:
     types: [closed]
@@ -58,7 +57,6 @@ jobs:
     - name: Run app
       run: .\build\app\app.exe
 
-<<<<<<< HEAD
     - name: Check Docker-Image
       run: docker images -q my-image
     - if: failure() 
@@ -66,8 +64,6 @@ jobs:
     - if: success()
       run: echo "I was succesful"
 
-=======
->>>>>>> 7543acbe95ab6ebde9ed0c174ef6ed7681fd765e
     - if: github.event.pull_request.merged != true && github.event_name != 'pull_request'
       name: Increase Build-Number
       run: ."C:\Program Files\Git\bin\bash.exe" tag-release.sh --branch ${{github.base_ref}}
