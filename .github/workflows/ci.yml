@@ -1,5 +1,6 @@
 name: Create Artifact JFrog
 
+# trigger workflow
 on: 
   pull_request:
     types: [closed]
