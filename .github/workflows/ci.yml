@@ -69,6 +69,7 @@ jobs:
     - name: My Docker-Image
       run: $env:img = $(docker images -q qtbuildtools:v2)
       if: echo $img == ""
+    - name: do it
       run: echo "it is empty"
 
 
