@@ -11,6 +11,7 @@ jobs:
   build:
     env:
       version: lib_jfrog
+      img: ""
     runs-on: windows-latest
     
     steps:
@@ -65,9 +66,11 @@ jobs:
     #- if: success()
     #  run: echo "I was succesful"
 
-    - if: ${{ docker images -q my-image }} == ""
-      name: My Docker-Image
-      run: echo "I found my image"
+    - name: My Docker-Image
+      run: $env:img = $(docker images -q qtbuildtools:v2)
+      if: echo $img == ""
+      run: echo "it is empty"
+
 
     - if: github.event.pull_request.merged != true && github.event_name != 'pull_request'
       name: Increase Build-Number
