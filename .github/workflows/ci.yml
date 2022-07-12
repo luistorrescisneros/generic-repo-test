@@ -65,6 +65,10 @@ jobs:
     #- if: success()
     #  run: echo "I was succesful"
 
+    - if: ${{ docker images -q my-image }} == ""
+      name: My Docker-Image
+      run: echo "I found my image"
+
     - if: github.event.pull_request.merged != true && github.event_name != 'pull_request'
       name: Increase Build-Number
       run: ."C:\Program Files\Git\bin\bash.exe" tag-release.sh --branch ${{github.base_ref}}
