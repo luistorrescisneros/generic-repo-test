@@ -11,7 +11,7 @@ jobs:
   build:
     env:
       version: lib_jfrog
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
